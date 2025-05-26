@@ -1,0 +1,24 @@
+{
+  "name": "cypress_grizly_project",
+  "version": "1.0.0",
+  "description": "testovaci projekt cypress",
+  "license": "ISC",
+  "author": "Jana Hejtmankova",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "cy:run:spec": "cypress run --spec"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.21",
+    "cypress": "^14.4.0",
+    "typescript": "^5.8.3"
+  },
+  "keywords": [],
+  "dependencies": {
+    "dotenv": "^16.5.0"
+  }
+}
