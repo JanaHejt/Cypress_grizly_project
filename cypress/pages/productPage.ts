@@ -9,6 +9,7 @@ import productDescriptionComponent from "./components/productDescriptionComponen
   constructor(component: productDetailComponent) {
     this.component = component;
 
+   
   }
    //Selektory
 
@@ -19,7 +20,7 @@ import productDescriptionComponent from "./components/productDescriptionComponen
    productReview () {return cy.get('div[id="cDetailReview"]')
    }
 
-  //Metody pro ověření elementů na stránce
+  //Metoda pro ověření elementů na stránce
    verifyElementsOnProductPage() {
       this.breadcrumbs().should('be.visible')
       this.component.productImage().should('be.visible')
@@ -36,6 +37,10 @@ import productDescriptionComponent from "./components/productDescriptionComponen
       this.similarProducts().should('be.visible')
       this.productReview().should('be.visible')
    }
+//Metoda pro ověření sekce productDescription
 
+verifyElementsOnProductDescription(){
+    
+}
 
 }

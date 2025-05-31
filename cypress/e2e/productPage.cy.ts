@@ -1,50 +1,51 @@
 import productPage from "../pages/productPage";
 import productDetailComponent from "../pages/components/productDetailComponent";
+import productDescriptionComponent from "../pages/components/productDescriptionComponent";
 
 describe("Product page test", () => {
-  const grizly_productPage = new productPage(new productDetailComponent());
+  const product = new productPage(new productDetailComponent());
 
   beforeEach(() => {
-    cy.visit("https://www.grizly.cz/emco-tycinka-super-ovoce-jahoda-30-g");
+    cy.visit(
+      "https://www.grizly.cz/grizly-mandle-v-bile-cokolade-s-kokosem-250-g"
+    );
     cy.get(".fancybox-slide");
     cy.get("#btn-cookie-accept-all").click();
   });
 
-  it.skip("Ověří přítomnost klíčových prvků a komponent na produktové stránce a jejich viditelnost", () => {
-    grizly_productPage.verifyElementsOnProductPage();
+  it("Ověří přítomnost klíčových prvků a komponent na produktové stránce a jejich viditelnost", () => {
+    product.verifyElementsOnProductPage();
   });
 
   it("Zkontroluje, že je vybraný produkt skladem", () => {
     // Dynamická kontrola dostupnosti produktu
-    grizly_productPage.component.productAvailability().then(($availability) => {
+    product.component.productAvailability().then(($availability) => {
       if ($availability.text().includes("Dočasně nedostupné")) {
         cy.log("Produkt je dočasně nedostupný.");
         cy.wrap($availability).should("contain.text", "Dočasně nedostupné");
       } else {
         cy.log("Produkt je skladem.");
-        grizly_productPage.component.buyButtons().should("be.visible");
-        grizly_productPage.component
+        product.component.buyButtons().should("be.visible");
+        product.component
           .productAvailability()
           .should("contain.text", "Skladem");
       }
     });
+  });
 
-    // Kontrola, že obsah soli je 0g (změnit selektor na ten, který odpovídá skutečné stránce!!)
-    it.skip("Zkontroluje, že ve složení výrobku je 0 g soli", () => {
-      grizly_productPage.component
-        .productAnotation()
-        .should("contain.text", "0 g soli");
-    });
+  // Kontrola, v sekci Složení výrobku, že země požadovaná výroby
+  it("Zkontroluje, že země výroby je Česká republika", () => {
+    productDescriptionComponent
+      .productIngredients()
+      .should("contain.text", "Česká republika");
   });
 
   it("Vloží produkt do košíku a zkontroluje, že se objeví text o počtu kusů v košíku", () => {
     // Klik na tlačítko pro přidání do košíku
-    grizly_productPage.component.buyButtons().find("button").click();
+    product.component.buyButtons().find("button").click();
 
     // Kontrola, že se objeví text s počtem kusů v košíku (více než 0)
-    grizly_productPage.component
-      .buyText()
-      .should("contain.text", "ks v košíku");
+    product.component.buyText().should("contain.text", "ks v košíku");
     cy.get(".stepper-input input")
       .invoke("val")
       .then((value) => {

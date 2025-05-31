@@ -22,6 +22,10 @@ class LoginPage {
     return cy.get('div[id="logFailMess"]')
   }
 
+//   loginFailMessage(options?: Partial<Cypress.Timeoutable>) {
+//   return cy.get('#logFailMess', options);
+// }
+
   //Metoda
   login(user: User) {
     this.emailInput().type(user.email);

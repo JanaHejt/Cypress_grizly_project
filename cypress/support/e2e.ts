@@ -13,5 +13,12 @@
 // https://on.cypress.io/configuration
 // ***********************************************************
 
+Cypress.on("uncaught:exception", (err: Error) => {
+  if (err.message.includes("Cannot read properties of null")) {
+    return false;
+  }
+});
+
 // Import commands.js using ES2015 syntax:
 import './commands'
+

@@ -2,14 +2,15 @@ const { defineConfig } = require("cypress");
 
 
 module.exports = defineConfig({
+  
   e2e: {
    "baseUrl":'https://www.grizly.cz/',
    env: {
       USER_EMAIL: 'hejtmankovaTest@gmail.com',
       USER_PASSWORD: 'KSbq7hkhFRj.SVL'
     },
-    //"video": true,
-   // "videosFolder": 'cypress/videos',
+   "video": true,
+   "videosFolder": 'cypress/videos',
     "watchForFileChanges": false,
     "viewportHeight":3000,
     "viewportWidth":1700,

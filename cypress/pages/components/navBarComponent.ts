@@ -13,7 +13,7 @@ export default class navBarComponent {
   };
 
   getSubmitButton = () => {
-    return cy.get('button[type="submit"]');
+    return cy.get('button[id="searchButt"]');
   };
 
   // Přihlášení, Odhlášení a registrace

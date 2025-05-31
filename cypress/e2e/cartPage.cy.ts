@@ -1,4 +1,4 @@
-import grizly_homePage from "../pages/homePage";
+import homePage from "../pages/homePage";
 import akceComponent from "../pages/components/akceComponent";
 import cartPage from "../pages/cartPage";
 import cartComponent from "../pages/components/cartComponent";
@@ -9,7 +9,7 @@ describe("Cart Flow - Add product and validate cart content", () => {
     cy.get(".fancybox-slide");
     cy.get("#btn-cookie-accept-all").click();
     //cy.get('#onesignal-slidedown-allow-button').click()
-    grizly_homePage.getAkce();
+    homePage.getAkce();
   });
 
   it("Should add product to cart and verify it on the cart page", () => {
@@ -20,7 +20,7 @@ describe("Cart Flow - Add product and validate cart content", () => {
 
     // Přejít do košíku přes navBar + Ověření, že jsme na stránce košíku + Delší timeout na načtení
 
-    grizly_homePage.navBar.getCartLink().click();
+    homePage.navBar.getCartLink().click();
     cy.url({ timeout: 10000 }).should("include", "/basket-1");
 
 

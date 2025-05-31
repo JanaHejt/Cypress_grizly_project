@@ -9,7 +9,7 @@ describe("Login", () => {
     password: Cypress.env("USER_PASSWORD"),
   };
 
-  it.skip("Should verify input fields visibility and log in registered user with valid credentials", () => {
+  it("Should verify input fields visibility and log in registered user with valid credentials", () => {
     //Arrange
     cy.visit("https://www.grizly.cz/");
     cy.get(".fancybox-slide");
@@ -36,24 +36,31 @@ describe("Login", () => {
   });
 
   it("Login should fail for user with invalid credentials", () => {
-    // Arrange
-    const invalidUser = {
-      email: "neexistuje@test.cz",
-      password: "spatneheslo123",
-    };
+    cy.fixture("invalidUser").then((invalidUser) => {
+      // Arrange
+      cy.visit("https://www.grizly.cz/");
+      cy.get(".fancybox-slide");
+      cy.get("#btn-cookie-accept-all").click();
 
-    cy.visit("https://www.grizly.cz/");
-    cy.get(".fancybox-slide");
-    cy.get("#btn-cookie-accept-all").click();
+      // Act
+      homePage.navBar.getLoginButton().click();
+      loginComponent.emailInput().type(invalidUser.email);
+      loginComponent.passwordInput().type(invalidUser.password);
+      loginComponent.loginButton().click();
 
-    // Act
-    homePage.navBar.getLoginButton().click();
-    loginComponent.emailInput().type(invalidUser.email);
-    loginComponent.passwordInput().type(invalidUser.password);
-    loginComponent.loginButton().click();
+      // Assert
+      loginComponent
+        .loginFailMessage()
+        .should("be.visible")
+        .and("contain.text", "Neplatné přihlášení.");
 
-   loginComponent.loginFailMessage()
-    .should("be.visible")
-    .and("contain.text", "Neplatné přihlášení."); 
+      // loginComponent.loginFailMessage().then(($el) => {
+      //   if ($el.is(":visible")) {
+      //     expect($el).to.contain.text("Neplatné přihlášení");
+      //   } else {
+      //     expect($el.text()).to.include("Neplatné přihlášení");
+      //   }
+      // });
+    });
+  });
 });
-})
