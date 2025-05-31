@@ -18,13 +18,13 @@ class LoginPage {
   logoutButton(){
     return cy.get('a[class="odhlaseni"]')
   }
-  loginFailMessage(){
-    return cy.get('div[id="logFailMess"]')
-  }
+  // loginFailMessage(){
+  //   return cy.get('div[id="logFailMess"]')
+  // }
 
-//   loginFailMessage(options?: Partial<Cypress.Timeoutable>) {
-//   return cy.get('#logFailMess', options);
-// }
+  loginFailMessage(options?: Partial<Cypress.Timeoutable>) {
+    return cy.get("#logFailMess", options);
+  }
 
   //Metoda
   login(user: User) {
