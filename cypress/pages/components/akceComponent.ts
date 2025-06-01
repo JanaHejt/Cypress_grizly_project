@@ -8,12 +8,12 @@ export default class akceComponent {
     this.position = 0; // Defaultně první prvek
   }
 
-  //NADRAZENY ELEMENT ZAPOUZDRI JEDNU MENU POLOŽKU
+  //Nadřazený element pro kartu produktu z komponenty
   nadradenyElementAkce() {
     return cy.get(`[data-id="${this.akceItemSelector}"]`).eq(this.position);
   }
 
-    //TOTO VŠE JE V KAŽDÉ JEDNÉ KARTĚ
+    //Elementy v kartě
 
     nameItem() {
         return this.nadradenyElementAkce().find('span[class="product__header-name"]')

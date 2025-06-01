@@ -4,7 +4,7 @@ import productPage from "../pages/productPage";
 import productDetailComponent from "../pages/components/productDetailComponent";
 import homePage from "../pages/homePage";
 
-describe("Vyhledání produktu", () => {
+describe("Product search", () => {
   //const page = new productPage(new productDetailComponent());
   
 

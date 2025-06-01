@@ -16,7 +16,7 @@ describe("Ověření domovské stránky Grizly.cz", () => {
     homePage.verifyHomePageElements();
   });
 
-  it("Ověří zobrazení nabídky Category Menu a hlavní titles", () => {
+  it("Ověří zobrazení nabídky Category Menu a hlavních titles", () => {
     cy.get(".fancybox-slide");
     cy.get("#btn-cookie-accept-all").click();
     //grizly_homePage.waitForStickyElement()
@@ -26,6 +26,12 @@ describe("Ověření domovské stránky Grizly.cz", () => {
       MenuItems.AKCE_SLEVY,
       MenuItems.GRIZLY_SVET,
       MenuItems.ORECHY,
+      MenuItems.SUSENE_A_LYO_OVOCE,
+      MenuItems.ORECHOVA_MASLA_AKREMY,
+      MenuItems.VARENI_A_PECENI,
+      MenuItems.SNIDANE,
+      MenuItems.MLSANI,
+      MenuItems.DOPLNKY
     ]);
   });
 });

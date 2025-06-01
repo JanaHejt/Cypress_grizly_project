@@ -5,6 +5,12 @@ export enum MenuItems {
   AKCE_SLEVY = "AKCE A SLEVY",
   GRIZLY_SVET = "GRIZLY SVĚT",
   ORECHY = "Ořechy",
+  SUSENE_A_LYO_OVOCE = "Sušené a lyo ovoce",
+  ORECHOVA_MASLA_AKREMY = "Ořechová másla a krémy",
+  VARENI_A_PECENI = "Vaření a pečení",
+  SNIDANE = "Snídaně",
+  MLSANI = "Mlsání",
+  DOPLNKY = "Doplňky stravy a péče"
 }
 
 export default new class homePage {
