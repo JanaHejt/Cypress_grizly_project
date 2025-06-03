@@ -45,17 +45,17 @@ describe("Interakce s komponentou Akce a přidání položky do košíku", () =>
   });
 
   it("Should verify all (visible) elements in the item card", () => {
-    const itemCard = new akceComponent("9389"); // Vytvoření instance s dataId xy
+    const itemCard = new akceComponent("18089"); // Vytvoření instance s dataId xy
     itemCard.nadradenyElementAkce().should("be.visible");
   });
 
   it("Should find product item and click Add to cart button", () => {
-    const itemCard = new akceComponent("9389"); // Vytvoření instance s dataId xy
+    const itemCard = new akceComponent("18089"); // Vytvoření instance s dataId xy
     //itemCard.nadradenyElementAkce().should("be.visible");
     itemCard
       .nameItem()
-      .should("contain.text", "Extra virgine olivový olej ve spreji");
-    itemCard.itemPrice().should("contain.text", "109");
+      .should("contain.text", "Jahody lyofilizované XXL");
+    itemCard.itemPrice().should("contain.text", "169");
     itemCard
       .buyItemButton()
       .should("be.visible")
@@ -64,7 +64,7 @@ describe("Interakce s komponentou Akce a přidání položky do košíku", () =>
   });
 
   it("Should verify that item was added to cart and correct number indication is displayed + navigate to cart page", () => {
-    const itemCard = new akceComponent("9389");
+    const itemCard = new akceComponent("18089");
 
     // Přidání položky do košíku
     itemCard.buyItemButton().click();

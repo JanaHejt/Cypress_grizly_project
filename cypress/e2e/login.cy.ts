@@ -35,7 +35,7 @@ describe("Login", () => {
     homePage.navBar.getLoginButton().should("contain.text", "Přihlásit");
   });
 
-  it("Login should fail for user with invalid credentials", () => {
+  it("Login should fail for user with invalid credentials", () => {  //npx cypress run --spec "cypress/e2e/login.cy.ts" --browser chrome --headless
     cy.fixture("invalidUser").then((invalidUser) => {
       // Arrange
       cy.visit("https://www.grizly.cz/");

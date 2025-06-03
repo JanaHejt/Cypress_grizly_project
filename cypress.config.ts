@@ -13,7 +13,7 @@ module.exports = defineConfig({
   //  "videosFolder": 'cypress/videos',
     "watchForFileChanges": false,
     "viewportHeight":3000,
-    "viewportWidth":1700,
+    "viewportWidth":1900,
     supportFile: "cypress/support/e2e.ts",
     specPattern: "cypress/e2e/**/*.cy.ts",
     setupNodeEvents(on, config) {

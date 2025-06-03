@@ -13,9 +13,9 @@ describe("Cart Flow - Add product and validate cart content", () => {
   });
 
   it("Should add product to cart and verify it on the cart page", () => {
-    const itemCard = new akceComponent("9389"); // produkt: Extra virgine olivový olej
+    const itemCard = new akceComponent("18089"); // produkt: Extra virgine olivový olej
 
-    // Přidání produktu do košíku
+    // Přidání produktu do košíkus
     itemCard.buyItemButton().should("be.visible").click();
 
     // Přejít do košíku přes navBar + Ověření, že jsme na stránce košíku + Delší timeout na načtení
@@ -32,7 +32,7 @@ describe("Cart Flow - Add product and validate cart content", () => {
     cartPage.verifyCartElements();
 
     // Ověření, že správný produkt je v tabulce
-    cartComp.nameItem().should("contain.text", "Extra virgine olivový olej");
-    cartComp.priceItem().should("contain.text", "109");
+    cartComp.nameItem().should("contain.text", "Jahody lyofilizované XXL");
+    cartComp.priceItem().should("contain.text", "169");
   });
 });
