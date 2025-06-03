@@ -18,6 +18,36 @@ Cypress.on("uncaught:exception", (err: Error) => {
     return false;
   }
 });
+// Cypress.on('uncaught:exception', (err, runnable) => {
+//     return false
+// })
+
+//Ignore fetch logs
+const app = window.top
+if (app!.document.head.querySelector('[data-hide-command-log-request]')) {
+    const style = app!.document.createElement('style')
+    style.innerHTML =
+        '.command-name-request, .command-name-xhr { display: none }'
+    style.setAttribute('data-hide-command-log-request', '')
+    app!.document.head.appendChild(style)
+}
+
+//U webů, kde je hodně animací
+// Cypress.on('window:before:load', window => {
+//     window.document.head.insertAdjacentHTML(
+//         'beforeend',
+//         `
+//     <style>
+//       /* Disable CSS transitions. */
+//       *, *::before, *::after { -webkit-transition: none !important; -moz-transition: none !important; -o-transition: none !important; transition: none !important; }
+//       /* Disable CSS animations. */
+//       *, *::before, *::after { -webkit-animation: none !important; -moz-animation: none !important; -o-animation: none !important; animation: none !important; }
+//     </style>
+//   `
+//     )
+// })
+
+
 
 // Import commands.js using ES2015 syntax:
 import './commands'

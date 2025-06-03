@@ -6,8 +6,8 @@ module.exports = defineConfig({
   e2e: {
    "baseUrl":'https://www.grizly.cz/',
    env: {
-      USER_EMAIL: 'hejtmankovaTest@gmail.com',
-      USER_PASSWORD: 'KSbq7hkhFRj.SVL'
+      // USER_EMAIL: 'hejtmankovaTest@gmail.com',
+      // USER_PASSWORD: 'KSbq7hkhFRj.SVL'
     },
   //  "video": true,
   //  "videosFolder": 'cypress/videos',
