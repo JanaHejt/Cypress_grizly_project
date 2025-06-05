@@ -3,6 +3,7 @@ const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
   watchForFileChanges: false,
+  projectId: "9j2rhb",
   e2e: {
     baseUrl: "https://www.grizly.cz/",
     env: {
