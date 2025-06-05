@@ -1,29 +1,36 @@
 export interface User {
-    email: string,
-    password: string
+  email: string,
+  password: string
 }
 
 class LoginPage {
   //Selektory
 
+  //parent element v ramci ktereho se budu hledaji elementy
+  loginForm() {
+    return cy.get('[id="frmLoginForm"]');
+  }
+
   emailInput() {
-    return cy.get('input[tabindex="1"]');
+    return this.loginForm().find('input[name="logEmail"]');
   }
   passwordInput() {
-    return cy.get('input[tabindex="2"]');
+    return this.loginForm().find('input[name="logPass"]');
   }
-  loginButton(){
-     return cy.get('input[tabindex="3"]');
+  loginButton() {
+    return this.loginForm().find('input[name="logAdd"]');
   }
-  logoutButton(){
-    return cy.get('a[class="odhlaseni"]')
+  logoutButton() {
+    return this.loginForm().find('a[class="odhlaseni"]')
   }
+
+  // toto je tiez validny zapis
   // loginFailMessage(){
   //   return cy.get('div[id="logFailMess"]')
   // }
 
-  loginFailMessage(options?: Partial<Cypress.Timeoutable>) {
-    return cy.get("#logFailMess", options);
+  loginFailMessage() {
+    return this.loginForm().find("#logFailMess");
   }
 
   //Metoda

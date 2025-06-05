@@ -5,7 +5,7 @@ import cartComponent from "../pages/components/cartComponent";
 
 describe("Cart Flow - Add product and validate cart content", () => {
   beforeEach(() => {
-    cy.visit("https://www.grizly.cz");
+    cy.visit("/");
     cy.get(".fancybox-slide");
     cy.get("#btn-cookie-accept-all").click();
     //cy.get('#onesignal-slidedown-allow-button').click()

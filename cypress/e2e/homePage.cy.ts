@@ -4,7 +4,7 @@ import akceComponent from "../pages/components/akceComponent";
 
 describe("Ověření domovské stránky Grizly.cz", () => {
   beforeEach(() => {
-    cy.visit("https://www.grizly.cz/");
+    cy.visit("/");
     // cy.get('.fancybox-slide')
     // cy.get('#btn-cookie-accept-all').click()
   });
@@ -38,7 +38,7 @@ describe("Ověření domovské stránky Grizly.cz", () => {
 
 describe("Interakce s komponentou Akce a přidání položky do košíku", () => {
   beforeEach(() => {
-    cy.visit("https://www.grizly.cz/");
+    cy.visit("/");
     cy.get(".fancybox-slide");
     cy.get("#btn-cookie-accept-all").click();
     homePage.getAkce();

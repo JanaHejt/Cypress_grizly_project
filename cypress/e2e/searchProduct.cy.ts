@@ -9,7 +9,7 @@ describe("Product search", () => {
   
 
   beforeEach(() => {
-    cy.visit("https://www.grizly.cz/");
+    cy.visit("/");
     cy.get(".fancybox-slide");
     cy.get("#btn-cookie-accept-all").click();
   });

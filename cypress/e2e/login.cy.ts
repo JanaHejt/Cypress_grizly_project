@@ -11,7 +11,7 @@ describe("Login", () => {
 
   it("Should verify input fields visibility and log in registered user with valid credentials", () => {
     //Arrange
-    cy.visit("https://www.grizly.cz/");
+    cy.visit("/");
     cy.get(".fancybox-slide");
     cy.get("#btn-cookie-accept-all").click();
 
@@ -35,10 +35,11 @@ describe("Login", () => {
     homePage.navBar.getLoginButton().should("contain.text", "Přihlásit");
   });
 
-  it("Login should fail for user with invalid credentials", () => {  //npx cypress run --spec "cypress/e2e/login.cy.ts" --browser chrome --headless
+it("Login should fail for user with invalid credentials", () => {  //npx cypress run --spec "cypress/e2e/login.cy.ts" --browser chrome --headless
     cy.fixture("invalidUser").then((invalidUser) => {
       // Arrange
-      cy.visit("https://www.grizly.cz/");
+      
+      cy.visit("/");
       cy.get(".fancybox-slide");
       cy.get("#btn-cookie-accept-all").click();
 
@@ -48,25 +49,22 @@ describe("Login", () => {
       );
 
       // Act
+      // toto idealne preniest do POM , login() metodu tam uz mate
       homePage.navBar.getLoginButton().click();
       loginComponent.emailInput().type(invalidUser.email);
-      loginComponent.passwordInput().type(invalidUser.password);
-      loginComponent.loginButton().click();
+      loginComponent.passwordInput().type(invalidUser.password)
+        .should("have.value", invalidUser.password).wait(500); // čekám 500ms, aby se vyplnilo pole
+      loginComponent.loginButton().should('be.enabled').click();
 
       // Čekám na odpověď serveru
       cy.wait("@loginRequest").its("response.statusCode").should("eq", 200);
 
-      // Ověření textu chybové hlášky bez ohledu na visibility
-      cy.get("#logFailMess td", { timeout: 10000 }).should(($td) => {
-        const text = $td.text().trim();
-        expect(text).to.include("Neplatné přihlášení");
-      });
 
-      // Assert -> tento test funugje pouze v GUI, ale pro headless mode nestačí
-      // loginComponent
-      //   .loginFailMessage()
-      //   .should("be.visible")
-      //   .and("contain.text", "Neplatné přihlášení.");
+      // Assert
+      loginComponent
+        .loginFailMessage()
+        .should("be.visible")
+        .and("contain.text", "Neplatné přihlášení.");
     });
   });
 });
